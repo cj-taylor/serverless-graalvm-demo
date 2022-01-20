@@ -10,12 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import software.amazon.awscdk.BundlingOptions;
-import software.amazon.awscdk.CfnOutput;
-import software.amazon.awscdk.DockerImage;
-import software.amazon.awscdk.DockerVolume;
-import software.amazon.awscdk.Stack;
-import software.amazon.awscdk.StackProps;
+import software.amazon.awscdk.*;
 import software.amazon.awscdk.services.apigatewayv2.alpha.AddRoutesOptions;
 import software.amazon.awscdk.services.apigatewayv2.alpha.HttpApi;
 import software.amazon.awscdk.services.apigatewayv2.alpha.HttpMethod;
@@ -83,6 +78,7 @@ public class InfrastructureStack extends Stack {
                 .runtime(Runtime.PROVIDED_AL2)
                 .code(Code.fromAsset("../software/", AssetOptions.builder()
                         .bundling(builderOptions)
+                        .assetHashType(AssetHashType.OUTPUT)
                         .build()))
                 .handler("software.amazonaws.example.product.entrypoints.ApiGatewayGetProductRequestHandler")
                 .memorySize(256)
@@ -96,6 +92,7 @@ public class InfrastructureStack extends Stack {
                 .runtime(Runtime.PROVIDED_AL2)
                 .code(Code.fromAsset("../software/", AssetOptions.builder()
                         .bundling(builderOptions)
+                        .assetHashType(AssetHashType.OUTPUT)
                         .build()))
                 .handler("software.amazonaws.example.product.entrypoints.ApiGatewayGetAllProductRequestHandler")
                 .memorySize(256)
@@ -109,6 +106,7 @@ public class InfrastructureStack extends Stack {
                 .runtime(Runtime.PROVIDED_AL2)
                 .code(Code.fromAsset("../software/", AssetOptions.builder()
                         .bundling(builderOptions)
+                        .assetHashType(AssetHashType.OUTPUT)
                         .build()))
                 .handler("software.amazonaws.example.product.entrypoints.ApiGatewayPutProductRequestHandler")
                 .memorySize(256)
@@ -122,6 +120,7 @@ public class InfrastructureStack extends Stack {
                 .runtime(Runtime.PROVIDED_AL2)
                 .code(Code.fromAsset("../software/", AssetOptions.builder()
                         .bundling(builderOptions)
+                        .assetHashType(AssetHashType.OUTPUT)
                         .build()))
                 .handler("software.amazonaws.example.product.entrypoints.ApiGatewayDeleteProductRequestHandler")
                 .memorySize(256)
